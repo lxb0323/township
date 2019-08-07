@@ -26,6 +26,7 @@ from utils import redis_cli
 
 # Create your views here.
 
+
 # 维度消息条数
 class UnreadMessageCount(APIView):
     def get(self,request,*args,**kwargs):

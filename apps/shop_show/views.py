@@ -46,6 +46,7 @@ class ShowAllgoodsView(APIView):
             "ret":page1.object_list}
         return Response(data)
 
+
 class ShowAllOrderableGoodsView(APIView):
     def get(self,request,*args,**kwargs):
         '''

@@ -3,6 +3,7 @@ from utils.fields import ListFiled
 
 # Create your models here.
 
+
 class Users(models.Model):
     u_id = models.BigIntegerField(unique=True)
     mobile = models.CharField(max_length=11,unique=True,verbose_name='用户手机号')
@@ -20,6 +21,7 @@ class Users(models.Model):
         managed = True
         verbose_name = '用户表'
 
+
 class UserStatistics(models.Model):
     u_id = models.CharField(max_length=11,unique=True,verbose_name='用户编号')
     release_count = models.BigIntegerField(default=0,verbose_name='发布总数')
@@ -31,6 +33,7 @@ class UserStatistics(models.Model):
         db_table = 'user_statistics'
         managed = True
         verbose_name = '用户个人统计'
+
 
 class UsersInfo(models.Model):
     u_id = models.CharField(max_length=11,unique=True,verbose_name='用户编号')
@@ -51,6 +54,7 @@ class UsersInfo(models.Model):
         managed = True
         verbose_name = '用户信息表'
 
+
 class UsersType(models.Model):
     u_id = models.CharField(max_length=11,unique=True,verbose_name='用户手机号')
     u_type_choice = ((1,'普通用户'),(2,'平台官方'),(3,'购买商'),(4,'供货商'),(5,'农业周边工具原料商'),(6,'农技机构'))
@@ -62,6 +66,8 @@ class UsersType(models.Model):
         db_table = 'users_type'
         managed = True
         verbose_name = '用户类型表'
+
+
 class PurchaseMerchantFile(models.Model):
     # 购买商家资料表
     m_id = models.CharField(max_length=64, unique=True, verbose_name='商家资料编号')
@@ -91,6 +97,7 @@ class PurchaseMerchantFile(models.Model):
         managed = True
         verbose_name = '购买商家资料表'
 
+
 class SupplierMerchantFile(models.Model):
     # 供货商家资料表   养殖、种植大户、种养社、农业公司
     sm_id = models.CharField(max_length=64, unique=True, verbose_name='商家资料编号')
@@ -118,6 +125,7 @@ class SupplierMerchantFile(models.Model):
         db_table = 'supplier_merchantfile'
         managed = True
         verbose_name = '供货商家资料表'
+
 
 class SupplierMerchantProduct(models.Model):
     # 供货商产品表
@@ -168,6 +176,8 @@ class CommodType(models.Model):
         db_table = 'commod_type'
         managed = True
         verbose_name = '商品类型'
+
+
 # 可订购产品表
 class OrderableGoods(models.Model):
     g_id = models.CharField(max_length=64,unique=True, verbose_name='可订购商品编号')
@@ -186,6 +196,8 @@ class OrderableGoods(models.Model):
         db_table = 'orderable_goods'
         managed = True
         verbose_name = '可订购商品'
+
+
 # 可订购产品信息
 class OrderableGoodsInfo(models.Model):
     g_id = models.CharField(max_length=64,unique=True, verbose_name='可订购商品编号')
@@ -203,6 +215,8 @@ class OrderableGoodsInfo(models.Model):
         db_table = 'orderable_goods_info'
         managed = True
         verbose_name = '可订购商品信息'
+
+
 # 可订购产品图文
 class OrderableGoodsGraphic(models.Model):
     g_id = models.CharField(max_length=64,unique=True, verbose_name='可订购商品编号')
@@ -234,6 +248,7 @@ class OrderableGoodsGraphic(models.Model):
         managed = True
         verbose_name = '可订购商品图文'
 
+
 # 直购产品
 class DirectCommod(models.Model):
     dc_id = models.CharField(max_length=64,unique=True, verbose_name='可订购商品编号')
@@ -253,7 +268,8 @@ class DirectCommod(models.Model):
         db_table = 'direct_commod'
         managed = True
         verbose_name = '直购产品'
-    
+
+
 # 直购产品信息
 class DirectCommodInfo(models.Model):
     dc_id = models.CharField(max_length=64,unique=True, verbose_name='直购商品编号')
@@ -272,6 +288,8 @@ class DirectCommodInfo(models.Model):
         db_table = 'direct_commod_info'
         managed = True
         verbose_name = '直购产品信息'
+
+
 # 直购产品图文
 class DirectCommodGraphic(models.Model):
     dc_id = models.CharField(max_length=64,unique=True, verbose_name='直购商品编号')
@@ -285,6 +303,7 @@ class DirectCommodGraphic(models.Model):
         db_table = 'direct_commod_graphic'
         managed = True
         verbose_name = '直购产品图文'
+
 
 # 购物车
 class ShopCart(models.Model):
@@ -317,6 +336,7 @@ class Collection(models.Model):
         unique_together = ('u_id', 'coll_num',)
         verbose_name = '收藏'
 
+
 # 个人点赞记录
 class LikeRecord(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='用户编号')
@@ -328,6 +348,7 @@ class LikeRecord(models.Model):
         managed = True
         unique_together = ('u_id', 'like_id',)
         verbose_name = '点赞记录'
+
 
 # 订单表
 class Oeder(models.Model):
@@ -410,6 +431,8 @@ class BiddingApplication(models.Model):
         db_table = 'bidding_application'
         managed = True
         verbose_name = '竞购申请表'
+
+
 # 竞购竞价
 class BiddingPrice(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='用户编号')
@@ -430,6 +453,7 @@ class BiddingPrice(models.Model):
         db_table = 'bidding_price'
         managed = True
         verbose_name = '竞购竞价表'
+
 
 class UserGraphic(models.Model):
     graphic_id = models.CharField(max_length=64,unique=True, verbose_name='图文id')
@@ -492,6 +516,7 @@ class Dynamic(models.Model):
         managed = True
         verbose_name = '动态'
 
+
 class UsersAlbum(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='用户手机号')
     name = models.CharField(max_length=64, verbose_name='图片名')
@@ -501,6 +526,7 @@ class UsersAlbum(models.Model):
         db_table = 'users_album'
         managed = True
         verbose_name = '用户相册表'
+
 
 class UsersPermission(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='用户手机号')
@@ -527,6 +553,8 @@ class AttentionPeople(models.Model):
         db_table = 'attention_people'
         managed = True
         verbose_name = '关注的人表'
+
+
 # 关注的商品
 class AttentionCommodity(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='用户手机号')
@@ -538,6 +566,7 @@ class AttentionCommodity(models.Model):
         db_table = 'attention_commodity'
         managed = True
         verbose_name = '关注的商品表'
+
 
 class DirectCommodStock(models.Model):
     product_specif_id = models.CharField(max_length=64,unique=True,verbose_name='产品规格编号')
@@ -553,6 +582,7 @@ class DirectCommodStock(models.Model):
         db_table = 'direct_commod_stock'
         managed = True
         verbose_name = '直购商品库存表'
+
 
 class PersonalPurchase(models.Model):
     u_id = models.CharField(max_length=11,verbose_name='发布人编号')
@@ -669,6 +699,8 @@ class GraphicComment(models.Model):
         db_table = 'graphic_comment'
         managed = True
         verbose_name = '图文评论主表'
+
+
 ### 动态评论回复表
 class GraphicReply(models.Model):
     graphic_reply_id = models.CharField(max_length=64,unique=True,verbose_name='动态评论回复id')
@@ -689,6 +721,8 @@ class GraphicReply(models.Model):
         db_table = 'graphic_reply'
         managed = True
         verbose_name = '图文评论回复表'
+
+
 # 评论表
 ## 评论主表
 class Comment(models.Model):
@@ -709,6 +743,8 @@ class Comment(models.Model):
         db_table = 'comment'
         managed = True
         verbose_name = '评论主表'
+
+
 ### 评论回复表
 class Reply(models.Model):
     reply_id = models.CharField(max_length=64,unique=True,verbose_name='动态评论回复id')

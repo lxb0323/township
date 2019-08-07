@@ -29,6 +29,8 @@ from apps.index_show.models import (UsersInfo,Users,UsersType,ShippingAddress,Sh
                                     Dynamic,OrderableGoods,DirectCommod,LikeRecord,Reply,UserStatistics,DirectCommodStock)
 
 # Create your views here.
+
+
 class AvatarImageUploadReturnPathView(APIView):
     @authenticated
     def post(self,request,*args,**kwargs):
@@ -52,6 +54,7 @@ class AvatarImageUploadReturnPathView(APIView):
             print(e)
             return JsonResponse({'code':110017,'msg':'请正确选择图片'})
         return JsonResponse({"code":1,"address":path})
+
 
 class UserInfoWriteAndReadView(APIView):
     def get_avatar_name_path(self,u_id):
@@ -80,6 +83,7 @@ class UserInfoWriteAndReadView(APIView):
                 'edit_business_data':u_type.edit_business_data,'sex':uinfo.sex}
         info_data = {'ta_release':u_sta.release_count,'ta_attention':u_sta.followig_count,'ta_fan':u_sta.fan_count,'ta_praise_count':u_sta.praise_count}
         return JsonResponse({'code':1,'main_data':data,'info_data':info_data})
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -143,6 +147,7 @@ class ModifyPasswordView(APIView):
         '''
         pass
 
+
 class ShippingAddressEditandLookView(APIView):
     @authenticated
     def get(self,request,*args,**kwargs):
@@ -168,6 +173,7 @@ class ShippingAddressEditandLookView(APIView):
         data = {"count":p.count,"num_pages":p.num_pages,"next_page":next_page,"previous_page":previous_page,
             "ret":page1.object_list}
         return Response(data)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -201,6 +207,7 @@ class ShippingAddressEditandLookView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+    
     @authenticated
     def delete(self,request,*args,**kwargs):
         '''
@@ -265,6 +272,7 @@ class ShoppingCarView(APIView):
         data = {"count":p.count,"num_pages":p.num_pages,"next_page":next_page,"previous_page":previous_page,
             "ret":page1.object_list}
         return Response(data)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -295,6 +303,7 @@ class ShoppingCarView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+    
     @authenticated
     def delete(self,request,*args,**kwargs):
         '''
@@ -310,6 +319,8 @@ class ShoppingCarView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 购物车数量加减
 class AddShoppingCar(APIView):
     @authenticated
@@ -332,6 +343,8 @@ class AddShoppingCar(APIView):
             print(e)
             return JsonResponse({'code':-1,'msg':'操作失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 class LesshoppingCar(APIView):
     @authenticated
     def get(self,request,*args,**kwargs):
@@ -504,6 +517,8 @@ class AddDynamicCommentView(APIView):
             print(e)
             return JsonResponse({'code':110017,'msg':'评论失败'}) 
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 回复评论
 class AddDynamicReplyView(APIView):
     @authenticated
@@ -546,6 +561,7 @@ class AddDynamicReplyView(APIView):
             print(e)
             return JsonResponse({'code':110017,'msg':'操作失败'}) 
         return JsonResponse({'code':1,'msg':'操作成功'})
+
 
 # 用户添加、取消、查看自己的收藏
 class UserCollectionReadandAddandDelView(APIView):
@@ -653,6 +669,7 @@ class UserCollectionReadandAddandDelView(APIView):
     #         return JsonResponse({'code':110013,'msg':'提交失败'})
     #     return JsonResponse({'code':1,'msg':'操作成功'})
 
+
 # 点赞（图文、动态、可订购商品、评论、直购商品）
 class PointAwesomeView(APIView):
     @authenticated
@@ -705,6 +722,7 @@ class PointAwesomeView(APIView):
         data = {"count":p.count,"num_pages":p.num_pages,"next_page":next_page,"previous_page":previous_page,
             "ret":page1.object_list}
         return Response(data)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''

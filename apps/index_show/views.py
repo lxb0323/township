@@ -27,6 +27,7 @@ from apps.index_show.models import (Users,UserGraphic,Dynamic,OrderableGoods,Dir
                                     UserStatistics,UsersInfo,UsersType,AttentionPeople)
 
 
+
 class SendVerificationCode(APIView):
     def get(self,request,*args,**kwargs):
         '''
@@ -60,6 +61,7 @@ class SendVerificationCode(APIView):
         print(is_verify,111111111111111)
         assert is_verify == 4,110003
         return JsonResponse({"code":1,"msg":"验证成功"})
+
 
 class UserRegistrationView(APIView):
     def post(self,request,*args,**kwargs):
@@ -117,6 +119,7 @@ class UserRegistrationView(APIView):
             print(e)
             return JsonResponse({"code":104,"msg":"注册失败"})
         return JsonResponse(re_data)
+
 
 class LoginView(APIView):
     def post(self,request,*args,**kwargs):
@@ -180,6 +183,7 @@ class LoginView(APIView):
                 re_data['mobile'] = '用户不存在'
         return JsonResponse(re_data)
 
+
 class UserReturnFileView(APIView):
     @authenticated
     def get(self,request,*args,**kwargs):
@@ -211,6 +215,7 @@ class Department:#自定义的元素
         self.name = name
         self.key = key
         self.name1 = name1
+
 
 class AllContentShow(APIView):
     def get_data_sort(self):
@@ -324,6 +329,7 @@ class ObtainLordComment(APIView):
             "ret":page1.object_list}
         return Response(data)   
 
+
 class ObtainChildReply(APIView):
     def get(self,request,*args,**kwargs):
         '''
@@ -351,6 +357,7 @@ class ObtainChildReply(APIView):
         data = {"count":p.count,"num_pages":p.num_pages,"next_page":next_page,"previous_page":previous_page,
             "ret":page1.object_list}
         return Response(data)
+
 
 # 获取图文详情
 class UserGraphicDetailsView(APIView):
@@ -381,6 +388,7 @@ class UserGraphicDetailsView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return JsonResponse({'code':1,'msg':'获取成功','re_data':data})
+
 
 # 获取动态详情
 class DynamicDetailsView(APIView):

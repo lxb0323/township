@@ -31,6 +31,7 @@ from apps.index_show.models import (UserGraphic,Dynamic,OrderableGoods,DirectCom
 
 # Create your views here.
 
+
 class WriteGraphicView(APIView):
     @authenticated
     def post(self,request,*args,**kwargs):
@@ -67,6 +68,7 @@ class WriteGraphicView(APIView):
             return JsonResponse({'code':1401,'msg':'失败'})
         return JsonResponse({'code':1,'msg':'成功'})
 
+
 class ImageUploadReturnPathView(APIView):
     @authenticated
     def post(self,request,*args,**kwargs):
@@ -88,6 +90,7 @@ class ImageUploadReturnPathView(APIView):
             return JsonResponse({'code':110017,'msg':'请正确选择图片'})
         return JsonResponse({"address":path})
 
+
 class Base64ImageUploadReturnPathView(APIView):
     @authenticated
     def post(self,request,*args,**kwargs):
@@ -103,6 +106,7 @@ class Base64ImageUploadReturnPathView(APIView):
             print(e)
             return JsonResponse({'code':110017,'msg':'请正确选择图片'})
         return JsonResponse({"address":path})
+
 
 class PurchaseMerchantFileReadAndWriteView(APIView):
     @authenticated
@@ -123,6 +127,7 @@ class PurchaseMerchantFileReadAndWriteView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response({'code':1,'data':data})
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -160,6 +165,7 @@ class PurchaseMerchantFileReadAndWriteView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
 
 class UserDynamicReadAndWriteView(APIView):
     # @authenticated
@@ -200,6 +206,7 @@ class UserDynamicReadAndWriteView(APIView):
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
 
+
 class SupplierMerchantFileReadAndWriteView(APIView):
     # @authenticated
     def get(self,request,*args,**kwargs):
@@ -213,6 +220,7 @@ class SupplierMerchantFileReadAndWriteView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response(s_obj)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -249,6 +257,7 @@ class SupplierMerchantFileReadAndWriteView(APIView):
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
 
+
 class SupplierMerchantProductReadAndWriteView(APIView):
     # @authenticated
     def get(self,request,*args,**kwargs):
@@ -275,6 +284,7 @@ class SupplierMerchantProductReadAndWriteView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'获取失败'})
         return Response(data)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -326,6 +336,7 @@ class AddAndLookDirectCommodView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response(dc_obj)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -347,6 +358,8 @@ class AddAndLookDirectCommodView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 直购商品信息
 class AddandLookDirectCommodInfoView(APIView):
     def get(self,request,*args,**kwargs):
@@ -360,6 +373,7 @@ class AddandLookDirectCommodInfoView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response(dci_obj)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -398,6 +412,8 @@ class AddandLookDirectCommodInfoView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 直购商品图文
 class AddandLookDirectCommodGraphicView(APIView):
     def get(self,request,*args,**kwargs):
@@ -432,6 +448,8 @@ class AddandLookDirectCommodGraphicView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 直购商品库存
 class AddandLookDirectCommodStockView(APIView):
     def get(self,request,*args,**kwargs):
@@ -442,6 +460,7 @@ class AddandLookDirectCommodStockView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response(dcs_obj)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -471,6 +490,7 @@ class AddandLookDirectCommodStockView(APIView):
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
 
+
 # 可订购产品类型添加
 class CommodTypeWriteandReadView(APIView):
     def get(self,request,*args,**kwargs):
@@ -491,6 +511,7 @@ class CommodTypeWriteandReadView(APIView):
         data = {"count":p.count,"num_pages":p.num_pages,"next_page":next_page,"previous_page":previous_page,
             "ret":page1.object_list}
         return Response(data)
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -509,6 +530,8 @@ class CommodTypeWriteandReadView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 可订购商品添加
 class OrderableGoodsCatandWriteView(APIView):
     def get(self,request,*args,**kwargs):
@@ -522,6 +545,7 @@ class OrderableGoodsCatandWriteView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response({'code':1,'re_date':og_obj})
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -548,6 +572,7 @@ class OrderableGoodsCatandWriteView(APIView):
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
 
+
 # 可订购商品信息
 class OrderableGoodsInfoCatandWriteView(APIView):
     def get(self,request,*args,**kwargs):
@@ -561,6 +586,7 @@ class OrderableGoodsInfoCatandWriteView(APIView):
             print(e)
             return JsonResponse({'code':110012,'msg':'查询出错'})
         return Response({'code':1,'re_date':ogci_obj})
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''
@@ -591,6 +617,8 @@ class OrderableGoodsInfoCatandWriteView(APIView):
             print(e)
             return JsonResponse({'code':110013,'msg':'提交失败'})
         return JsonResponse({'code':1,'msg':'操作成功'})
+
+
 # 可订购商品图文
 class OrderableGoodsGraphicCatandWriteView(APIView):
     def get(self,request,*args,**kwargs):
@@ -634,7 +662,6 @@ class OrderableGoodsGraphicCatandWriteView(APIView):
 # 需求发布
 # 供应发布
 # 找帮工发布
-
 # 竞购需求发布
 # 竞购申请
 
@@ -672,6 +699,7 @@ class AddArticleTypeandLookView(APIView):
             "ret":page1.object_list}
         return Response(data)
         # return JsonResponse({})
+    
     @authenticated
     def post(self,request,*args,**kwargs):
         '''

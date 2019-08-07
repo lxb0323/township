@@ -32,6 +32,7 @@ from apps.index_show.models import (Users,UsersInfo,UsersType,PurchaseMerchantFi
 
 # Create your views here.
 
+
 fakea = Factory().create('zh_CN')
 
 # 生成用户数据
@@ -272,6 +273,7 @@ class GenerateUser(APIView):
                 b = b + 1
                 continue
         return JsonResponse({'code':1,'msg':"操作成功{},失败{}".format(a,b)})       
+
 # 生成图文类型
 class GenerateUser6(APIView):
     def get(self,request,*args,**kwargs):
